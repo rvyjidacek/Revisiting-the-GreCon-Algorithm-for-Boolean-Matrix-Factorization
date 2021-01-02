@@ -16,14 +16,14 @@ public class PartialFactorization: Benchmark {
         
         for url in urls {
             if url.isFileURL {
-                let context = try! FormalContext(url: url)
+                let context = try! FormalContext(url: url, format: .fimi)
                 let concepts = [FormalConcept](context.attributeConcepts.union(context.objectConcepts))
                 var times: [Double] = []
                 var factors: [FormalConcept] = []
-                
+                let timer = FcaKit.Timer()
                 
                 for _ in 0..<5 {
-                    let timer = Timer()
+                    timer.start()
                     factors = GreCon2().countFactorization(using: concepts, in: context)
                     let time = timer.stop()
                     times.append(time)

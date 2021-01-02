@@ -14,7 +14,7 @@ public class GraphVisualization {
     
     public func run() {
         let url = URL(fileURLWithPath: CommandLine.arguments[2])
-        let context = try! FormalContext(url: url)
+        let context = try! FormalContext(url: url, format: .fimi)
         
         for algorithm in algorithms {
             let factors = algorithm.countFactors(in: context)

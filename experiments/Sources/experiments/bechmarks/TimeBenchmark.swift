@@ -16,14 +16,15 @@ public class TimeBenchmark: Benchmark {
         
         for url in urls {
             if url.isFileURL {
-                let context = try! FormalContext(url: url)
+                let context = try! FormalContext(url: url, format: .fimi)
                 var times: [[Double]] = [[], [], []]
                 var algIndex = 0
                 let algs = [GreCon(), GreCon2(), GreConD()]
+                let timer = FcaKit.Timer()
                 
                 for algorithm in algs {
                     for _ in 0..<5 {
-                        let timer = Timer()
+                        timer.start()
                         let _ = algorithm.countFactors(in: context)
                         let time = timer.stop()
                         times[algIndex].append(time)

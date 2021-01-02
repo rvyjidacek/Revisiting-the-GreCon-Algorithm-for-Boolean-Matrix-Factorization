@@ -12,7 +12,7 @@ public class PartialGraphVisualization {
         
     public func run() {
         let url = URL(fileURLWithPath: CommandLine.arguments[2])
-        let context = try! FormalContext(url: url)
+        let context = try! FormalContext(url: url, format: .fimi)
         
         let algorithm2 = GreCon2()
         let concepts = [FormalConcept](context.attributeConcepts.union(context.objectConcepts))

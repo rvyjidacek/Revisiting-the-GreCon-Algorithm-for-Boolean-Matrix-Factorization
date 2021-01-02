@@ -10,6 +10,9 @@ if CommandLine.argc < 3 {
     print("  -g2: Computes coverage for GreCon2 and GreConD")
     print("  -p: Computes factorization for GreCon2 on A(I) and O(I)")
     print("  -pg: Computes coverage of GreCon2 on O(I) and A(I) vs GreConD")
+    print("  -qt: Computes times for GreCon2 with reduced input")
+    print("  -q: Compute data for quartiles coverage graphs")
+    print("  -qs: Quartiles stattisitcs")
     exit(1)
 }
 
@@ -37,6 +40,18 @@ do {
         benchmark = try PartialFactorization()
     case "-pg":
         let benchmark = PartialGraphVisualization()
+        benchmark.run()
+        exit(0)
+    case "-qt":
+        let benchmark = try QuartilesBenchmark()
+        benchmark.run()
+        exit(0)
+    case "-q":
+        let benchmark = QuartileGraphs()
+        benchmark.run()
+        exit(0)
+    case "-qs":
+        let benchmark = QuartileStatistics()
         benchmark.run()
         exit(0)
     default:
