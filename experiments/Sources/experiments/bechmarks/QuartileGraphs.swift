@@ -29,7 +29,7 @@ public class QuartileGraphs {
         for i in 0..<inputs.count {
             var outputs: String = ""
             let inputConcepts = concepts.filter { inputs[i].contains(getQuartile(size: $0.size, quartiles: quartiles)) }
-            let factors = GreCon2().countFactorization(using: inputConcepts, in: context)
+            let factors = GreCon2().countFactorization(using: inputConcepts, in: context) as! [FormalConcept]
             let coverage = dataForCoverageGraph(factors: factors, context: context, algorithmName: inputType[i])
             
             

@@ -37,7 +37,7 @@ public class QuartilesBenchmark: Benchmark {
         for quartileSet in inputs {
             let inputConcepts = concepts.filter { quartileSet.contains(getQuartile(size: $0.size, quartiles: quartiles)) }
             let measureResult = measure { () -> [FormalConcept] in
-                return GreCon2().countFactorization(using: inputConcepts, in: context)
+                return GreCon2().countFactorization(using: inputConcepts, in: context) as! [FormalConcept]
             }
             
             outputs.append(String(format: "$%.2f \\pm %.2f$", measureResult.averageTime, measureResult.deviation, measureResult.closureResult.count))

@@ -24,7 +24,7 @@ public class PartialFactorization: Benchmark {
                 
                 for _ in 0..<5 {
                     timer.start()
-                    factors = GreCon2().countFactorization(using: concepts, in: context)
+                    factors = GreCon2().countFactorization(using: concepts, in: context) as! [FormalConcept]
                     let time = timer.stop()
                     times.append(time)
                 }
